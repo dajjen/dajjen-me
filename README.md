@@ -76,10 +76,16 @@ och Lovable-hostingen är avvecklade.
 2. Aktivera **Email Routing** på zonen. Lägg till `perdavidbackman@gmail.com`
    som destinationsadress och verifiera via mejlet som skickas. Skapa
    adressen `kontakt@dajjen.me` som vidarebefordrar dit.
-3. Gå till **Workers & Pages → Create → Import a repository**, välj
-   `dajjen/dajjen-me`. Byggkommando lämnas tomt, deploy-kommando
-   `npx wrangler deploy`. Första deployen skapar workern, kopplar domänerna
-   i `routes` och `send_email`-bindningen.
+3. Första deployen gjordes manuellt med `npx wrangler login` + `npm run deploy`
+   2026-09-11. Den skapade workern, kopplade domänerna i `routes` och
+   `send_email`-bindningen.
+4. För automatisk deploy vid push: **Workers & Pages → dajjen-me → Settings →
+   Build → Connect** och välj `dajjen/dajjen-me`. Byggkommando lämnas tomt,
+   deploy-kommando `npx wrangler deploy`.
+
+Workern omdirigerar `http://` till `https://` och `www.dajjen.me` till
+`dajjen.me` (301). `run_worker_first` är på så att detta gäller alla
+sökvägar.
 
 Den gamla Supabase-funktionen används inte längre och kan tas bort.
 

@@ -7,6 +7,7 @@
  */
 import { EmailMessage } from "cloudflare:email";
 import { validateContact, buildRawEmail, isAllowedOrigin } from "./contact.js";
+import { canonicalRedirect } from "./redirects.js";
 
 const json = (body, status = 200, extra = {}) =>
   new Response(JSON.stringify(body), {
@@ -17,6 +18,10 @@ const json = (body, status = 200, extra = {}) =>
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // http -> https och www -> apex, permanent.
+    const canonical = canonicalRedirect(url, env.CANONICAL_HOST || "dajjen.me");
+    if (canonical) return Response.redirect(canonical, 301);
 
     if (url.pathname === "/api/contact") {
       return handleContact(request, env);

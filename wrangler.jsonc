@@ -11,7 +11,10 @@
     "directory": "./public",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    // Kör workern före asset-servering så att http->https och www->apex
+    // fungerar även för sökvägar som matchar en statisk fil.
+    "run_worker_first": true
   },
 
   // Skickar mejl via Email Routing. Mottagaren måste vara en verifierad
@@ -24,6 +27,7 @@
   ],
 
   "vars": {
+    "CANONICAL_HOST": "dajjen.me",
     "CONTACT_FROM": "kontakt@dajjen.me",
     "CONTACT_TO": "perdavidbackman@gmail.com",
     "ALLOWED_ORIGINS": "https://dajjen.me,https://www.dajjen.me"
