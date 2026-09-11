@@ -7,3 +7,8 @@ Thumbs.db
 
 # Lando runtime
 .lando.local.yml
+
+# Node / Wrangler
+node_modules/
+.wrangler/
+.dev.vars

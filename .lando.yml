@@ -2,7 +2,7 @@ name: dajjen-me
 services:
   appserver:
     type: nginx
-    webroot: .
+    webroot: public
     ssl: true
     config:
       vhosts: .lando/nginx/default.conf

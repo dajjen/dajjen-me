@@ -1,0 +1,40 @@
+{
+  // Cloudflare Workers-konfiguration för dajjen.me
+  // Dokumentation: https://developers.cloudflare.com/workers/wrangler/configuration/
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dajjen-me",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+
+  // Statiska filer. 404.html serveras med status 404 vid okända sökvägar.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+
+  // Skickar mejl via Email Routing. Mottagaren måste vara en verifierad
+  // destinationsadress under Email Routing i Cloudflare-kontot.
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL",
+      "destination_address": "perdavidbackman@gmail.com"
+    }
+  ],
+
+  "vars": {
+    "CONTACT_FROM": "kontakt@dajjen.me",
+    "CONTACT_TO": "perdavidbackman@gmail.com",
+    "ALLOWED_ORIGINS": "https://dajjen.me,https://www.dajjen.me"
+  },
+
+  // Egen domän. Kräver att zonen dajjen.me är tillagd i Cloudflare-kontot
+  // innan första deploy, annars: kommentera bort och lägg till i dashboarden.
+  "routes": [
+    { "pattern": "dajjen.me", "custom_domain": true },
+    { "pattern": "www.dajjen.me", "custom_domain": true }
+  ],
+
+  "observability": { "enabled": true }
+}

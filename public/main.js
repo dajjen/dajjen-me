@@ -108,10 +108,8 @@
   toast.addEventListener("click", () => (toast.hidden = true));
 
   /* ---------- Contact form ---------- */
-  const SUPABASE_URL = "https://daoxupiibdgfomdgdxej.supabase.co";
-  const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhb3h1cGlpYmRnZm9tZGdkeGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyMDcwODAsImV4cCI6MjA3OTc4MzA4MH0.EX9CUuAOHYbuabo9-INv1yHnV-ptokJwrSOwczL4CVc";
-  const FUNCTION_URL = SUPABASE_URL + "/functions/v1/send-contact-email";
+  // Skickas till Cloudflare Worker (src/worker.js) som mejlar via Email Routing.
+  const CONTACT_ENDPOINT = "/api/contact";
 
   const form = $("#contactForm");
   const status = $("#formStatus");
@@ -167,16 +165,13 @@
     submitLabel.textContent = "Skickar...";
 
     try {
-      const res = await fetch(FUNCTION_URL, {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: "Bearer " + SUPABASE_ANON_KEY,
-        },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, honeypot: form.elements.honeypot.value }),
       });
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || "HTTP " + res.status);
 
       form.reset();
       status.textContent = "Tack för ditt meddelande. Jag återkommer så snart som möjligt.";
@@ -184,9 +179,12 @@
       showToast("Meddelande skickat!", "Tack för ditt meddelande. Jag återkommer så snart som möjligt.");
     } catch (error) {
       console.error(error);
-      status.textContent = "Det gick inte att skicka meddelandet. Försök igen senare.";
+      const msg = error && error.message && !/^HTTP \d+$/.test(error.message)
+        ? error.message
+        : "Det gick inte att skicka meddelandet. Försök igen senare.";
+      status.textContent = msg;
       status.classList.add("is-error");
-      showToast("Något gick fel", "Det gick inte att skicka meddelandet. Försök igen senare.", true);
+      showToast("Något gick fel", msg, true);
     } finally {
       submitBtn.disabled = false;
       submitLabel.textContent = "Skicka meddelande";

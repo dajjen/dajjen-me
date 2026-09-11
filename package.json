@@ -1,0 +1,16 @@
+{
+  "name": "dajjen-me",
+  "version": "2.0.0",
+  "private": true,
+  "description": "dajjen.me – statisk personlig sajt med kontaktformulär på Cloudflare Workers",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test",
+    "check": "wrangler deploy --dry-run --outdir=.wrangler/dry-run"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
