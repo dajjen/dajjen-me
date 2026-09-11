@@ -1,0 +1,17 @@
+name: dajjen-me
+services:
+  appserver:
+    type: nginx
+    webroot: .
+    ssl: true
+    config:
+      vhosts: .lando/nginx/default.conf
+proxy:
+  appserver:
+    - dajjen-me.lndo.site
+tooling:
+  check:
+    service: appserver
+    description: Validera nginx-konfigurationen
+    cmd: nginx -t
+    user: root
