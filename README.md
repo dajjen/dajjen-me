@@ -53,10 +53,26 @@ npx wrangler login
 npm run deploy
 ```
 
+### Domän och DNS
+
+Domänen `dajjen.me` är registrerad hos **IONOS** (registrerad 2025-11-27).
+IONOS hanterar registreringen, förnyelsen och nameserver-inställningen.
+Logga in på https://login.ionos.se → **Domäner & SSL → dajjen.me → Namnservrar**
+för att ändra den.
+
+Nameservers pekar på **Cloudflare**, så själva DNS-posterna (A, CNAME, MX,
+TXT) hanteras i Cloudflare-dashboarden under zonen dajjen.me, inte hos IONOS.
+Poster som läggs in hos IONOS har ingen effekt så länge nameservers pekar på
+Cloudflare.
+
+Domänen var tidigare kopplad till Lovable via Domain Connect. Den kopplingen
+och Lovable-hostingen är avvecklade.
+
 ### Engångsuppsättning i Cloudflare
 
-1. Lägg till zonen `dajjen.me` under **Add a domain** och byt nameservers hos
-   domänleverantören till de Cloudflare anger.
+1. Lägg till zonen `dajjen.me` under **Add a domain**, radera de gamla
+   IONOS/Lovable-posterna, och byt nameservers hos IONOS till de Cloudflare
+   anger (gjort 2026-09-11).
 2. Aktivera **Email Routing** på zonen. Lägg till `perdavidbackman@gmail.com`
    som destinationsadress och verifiera via mejlet som skickas. Skapa
    adressen `kontakt@dajjen.me` som vidarebefordrar dit.
