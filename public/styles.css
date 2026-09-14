@@ -1092,7 +1092,7 @@ em {
     justify-self: start;
     width: min(70vw, 320px);
   }
-  .hero__badge { left: auto; right: -12px; bottom: 16px; }
+  .hero__badge { left: -12px; right: auto; bottom: 16px; }
   .hero__scroll { display: none; }
 
   .about, .contact { grid-template-columns: 1fr; }
