@@ -20,6 +20,9 @@
   --accent-deep: #0f766e;
   --accent-glow: rgba(45, 212, 191, 0.35);
   --danger: #f87171;
+  --drupal: #38bdf8;
+  --drupal-2: #7dd3fc;
+  --drupal-glow: rgba(56, 189, 248, 0.35);
 
   --font-sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -186,6 +189,18 @@ em {
 .btn--ghost:hover {
   background: var(--surface-hover);
   border-color: var(--border-strong);
+}
+
+.btn--drupal {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: var(--drupal);
+}
+.btn--drupal:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--drupal);
+  color: var(--drupal-2);
+  box-shadow: 0 8px 30px -12px var(--drupal-glow);
 }
 
 .btn--block { width: 100%; justify-content: center; padding: 16px 22px; }
