@@ -196,6 +196,20 @@ em {
   border-color: rgba(56, 189, 248, 0.35);
   color: var(--drupal);
 }
+.btn--drupal { padding-top: 8px; padding-bottom: 8px; }
+.btn__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  line-height: 1;
+}
+.btn__stack small {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+}
 .btn--drupal:hover {
   background: rgba(56, 189, 248, 0.2);
   border-color: var(--drupal);
