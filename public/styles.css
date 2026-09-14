@@ -744,25 +744,34 @@ em {
 }
 .skill-group ul {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
 }
 .skill-group li {
-  padding: 7px 13px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  font-size: 14px;
-  font-weight: 500;
+  position: relative;
+  padding: 9px 0 9px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 15px;
   color: var(--text-2);
-  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.3s var(--ease-out);
+  transition: color 0.25s, padding-left 0.3s var(--ease-out);
 }
-.skill-group li:hover {
-  color: var(--text);
-  border-color: rgba(45, 212, 191, 0.5);
-  background: rgba(45, 212, 191, 0.08);
-  transform: translateY(-2px);
+.skill-group li:first-child { border-top: 0; padding-top: 0; }
+.skill-group li:last-child { padding-bottom: 0; }
+.skill-group li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(50% - 1px);
+  width: 8px;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.6;
+  transition: width 0.3s var(--ease-out), opacity 0.3s;
 }
+.skill-group li:first-child::before { top: calc(50% - 5px); }
+.skill-group li:last-child::before { top: calc(50% + 3px); }
+.skill-group li:first-child:last-child::before { top: calc(50% - 1px); }
+.skill-group li:hover { color: var(--text); padding-left: 24px; }
+.skill-group li:hover::before { width: 12px; opacity: 1; }
 
 /* ==========================================================
    Experience / timeline
@@ -836,6 +845,11 @@ em {
   margin-top: 4px;
   font-weight: 500;
   color: var(--accent);
+}
+.timeline__note {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-3);
 }
 .timeline__list {
   margin-top: 22px;
