@@ -1,5 +1,5 @@
 /* dajjen.me – David Backman
-   Small vanilla JS: nav state, scroll reveal, contact form. */
+   Small vanilla JS: theme toggle, nav state, scroll reveal, contact form. */
 (function () {
   "use strict";
 
@@ -9,6 +9,28 @@
   /* ---------- Footer year ---------- */
   const year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
+
+  /* ---------- Tema: ljust/mörkt ---------- */
+  const root = document.documentElement;
+  const themeBtn = $("#themeToggle");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const currentTheme = () => root.dataset.theme || (prefersDark.matches ? "dark" : "light");
+  const updateThemeButton = () => {
+    if (!themeBtn) return;
+    const dark = currentTheme() === "dark";
+    themeBtn.setAttribute("aria-label", dark ? "Byt till ljust tema" : "Byt till mörkt tema");
+    themeBtn.setAttribute("title", dark ? "Ljust tema" : "Mörkt tema");
+  };
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) { /* privat läge */ }
+      updateThemeButton();
+    });
+  }
+  prefersDark.addEventListener("change", updateThemeButton);
+  updateThemeButton();
 
   /* ---------- Nav: scrolled state ---------- */
   const nav = $("#nav");
