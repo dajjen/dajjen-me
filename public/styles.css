@@ -69,9 +69,8 @@
   --grid-line: #cfc5aa;
   --nav-bg: rgba(250, 247, 239, 0.92);
   --stamp-blend: multiply;
-  --logo-filter: grayscale(1) contrast(1.05);
-  --logo-blend: multiply;
-  --logo-filter-hover: none;
+  --logo-plate: transparent;
+  --logo-plate-pad: 6px 0;
   --portrait-filter: saturate(0.92) contrast(1.04);
 }
 
@@ -106,9 +105,8 @@
   --grid-line: #3d372b;
   --nav-bg: rgba(22, 20, 16, 0.9);
   --stamp-blend: screen;
-  --logo-filter: grayscale(1) invert(1) brightness(1.15) contrast(1.05);
-  --logo-blend: screen;
-  --logo-filter-hover: invert(1) brightness(1.1);
+  --logo-plate: #faf7ef;
+  --logo-plate-pad: 8px 12px;
   --portrait-filter: saturate(0.85) contrast(1.02) brightness(0.92);
   color-scheme: dark;
 }
@@ -140,9 +138,8 @@
     --grid-line: #3d372b;
     --nav-bg: rgba(22, 20, 16, 0.9);
     --stamp-blend: screen;
-    --logo-filter: grayscale(1) invert(1) brightness(1.15) contrast(1.05);
-    --logo-blend: screen;
-    --logo-filter-hover: invert(1) brightness(1.1);
+    --logo-plate: #faf7ef;
+    --logo-plate-pad: 8px 12px;
     --portrait-filter: saturate(0.85) contrast(1.02) brightness(0.92);
     color-scheme: dark;
   }
@@ -1171,7 +1168,8 @@ em {
   gap: 18px;
   flex-shrink: 0;
   margin-left: auto;
-  padding: 6px 0;
+  padding: var(--logo-plate-pad);
+  background: var(--logo-plate);
 }
 .timeline__logos--stack {
   flex-direction: column;
@@ -1183,19 +1181,14 @@ em {
   align-items: center;
   gap: 8px;
 }
-.timeline__logos .timeline__logos-sub img { height: 15px; max-width: 90px; opacity: 0.6; }
+.timeline__logos .timeline__logos-sub img { height: 15px; max-width: 90px; }
 .timeline__logos img {
   height: 26px;
   width: auto;
   max-width: 120px;
   object-fit: contain;
-  mix-blend-mode: var(--logo-blend);
-  filter: var(--logo-filter);
-  opacity: 0.75;
-  transition: filter 0.2s ease, opacity 0.2s ease;
 }
 .timeline__logos img[src*="mittuniversitetet"] { height: 34px; }
-.timeline__body:hover .timeline__logos img { filter: var(--logo-filter-hover); opacity: 1; }
 .timeline__role {
   font-family: var(--ff-display);
   font-weight: 750;
