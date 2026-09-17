@@ -14,7 +14,6 @@
   const root = document.documentElement;
   const modeBtn = $("#themeToggle");
   const themeSwitch = $("#themeSwitch");
-  const themeValue = $("#themeSwitchValue");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
   const CORP_FONTS = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
   const store = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* privat läge */ } };
@@ -41,7 +40,6 @@
       const corp = currentTheme() === "corp";
       themeSwitch.setAttribute("aria-checked", String(corp));
       themeSwitch.setAttribute("aria-label", "Tema: " + (corp ? "Corp" : "Dev") + ". Byt till " + (corp ? "Dev" : "Corp"));
-      if (themeValue) themeValue.textContent = corp ? "Corp" : "Dev";
     }
   };
 
