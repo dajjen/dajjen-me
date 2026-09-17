@@ -104,7 +104,7 @@
   --grid-line: #3d372b;
   --nav-bg: rgba(22, 20, 16, 0.9);
   --stamp-blend: screen;
-  --logo-halo: drop-shadow(0 0 1px rgba(236, 229, 211, 0.95)) drop-shadow(0 0 3px rgba(236, 229, 211, 0.55));
+  --logo-halo: drop-shadow(1px 0 0 var(--ink)) drop-shadow(-1px 0 0 var(--ink)) drop-shadow(0 1px 0 var(--ink)) drop-shadow(0 -1px 0 var(--ink));
   --portrait-filter: saturate(0.85) contrast(1.02) brightness(0.92);
   color-scheme: dark;
 }
@@ -136,7 +136,7 @@
     --grid-line: #3d372b;
     --nav-bg: rgba(22, 20, 16, 0.9);
     --stamp-blend: screen;
-    --logo-halo: drop-shadow(0 0 1px rgba(236, 229, 211, 0.95)) drop-shadow(0 0 3px rgba(236, 229, 211, 0.55));
+    --logo-halo: drop-shadow(1px 0 0 var(--ink)) drop-shadow(-1px 0 0 var(--ink)) drop-shadow(0 1px 0 var(--ink)) drop-shadow(0 -1px 0 var(--ink));
     --portrait-filter: saturate(0.85) contrast(1.02) brightness(0.92);
     color-scheme: dark;
   }
