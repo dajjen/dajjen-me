@@ -1245,20 +1245,6 @@ em {
 .form__status.is-success { color: var(--green); }
 
 /* ==========================================================
-   Varningsremsa ovanpå kontaktsektionen
-   ========================================================== */
-.section--stripe::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  height: 14px;
-  background-image: repeating-linear-gradient(-45deg, var(--ink) 0 14px, var(--orange) 14px 28px);
-  opacity: 0.85;
-}
-
-/* ==========================================================
    Footer – ritningens stämpelruta ("title block")
    ========================================================== */
 .footer {
