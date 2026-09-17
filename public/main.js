@@ -10,24 +10,24 @@
   const year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ---------- Läge (ljust/mörkt) och tema (Silo/Klassisk) ---------- */
+  /* ---------- Läge (ljust/mörkt) och tema (Dev/Corp) ---------- */
   const root = document.documentElement;
   const modeBtn = $("#themeToggle");
   const themeSwitch = $("#themeSwitch");
   const themeValue = $("#themeSwitchValue");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-  const CLASSIC_FONTS = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
+  const CORP_FONTS = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
   const store = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* privat läge */ } };
 
   const currentMode = () => root.dataset.mode || (prefersDark.matches ? "dark" : "light");
-  const currentTheme = () => (root.dataset.theme === "classic" ? "classic" : "silo");
+  const currentTheme = () => (root.dataset.theme === "corp" ? "corp" : "dev");
 
-  const ensureClassicFonts = () => {
-    if ($("#classicFonts")) return;
+  const ensureCorpFonts = () => {
+    if ($("#corpFonts")) return;
     const l = document.createElement("link");
     l.rel = "stylesheet";
-    l.id = "classicFonts";
-    l.href = CLASSIC_FONTS;
+    l.id = "corpFonts";
+    l.href = CORP_FONTS;
     document.head.appendChild(l);
   };
 
@@ -38,10 +38,10 @@
       modeBtn.setAttribute("title", dark ? "Ljust läge" : "Mörkt läge");
     }
     if (themeSwitch) {
-      const classic = currentTheme() === "classic";
-      themeSwitch.setAttribute("aria-checked", String(classic));
-      themeSwitch.setAttribute("aria-label", "Tema: " + (classic ? "Klassisk" : "Silo") + ". Byt till " + (classic ? "Silo" : "Klassisk"));
-      if (themeValue) themeValue.textContent = classic ? "Klassisk" : "Silo";
+      const corp = currentTheme() === "corp";
+      themeSwitch.setAttribute("aria-checked", String(corp));
+      themeSwitch.setAttribute("aria-label", "Tema: " + (corp ? "Corp" : "Dev") + ". Byt till " + (corp ? "Dev" : "Corp"));
+      if (themeValue) themeValue.textContent = corp ? "Corp" : "Dev";
     }
   };
 
@@ -55,10 +55,10 @@
   }
   if (themeSwitch) {
     themeSwitch.addEventListener("click", () => {
-      const next = currentTheme() === "classic" ? "silo" : "classic";
-      if (next === "classic") {
-        ensureClassicFonts();
-        root.dataset.theme = "classic";
+      const next = currentTheme() === "corp" ? "dev" : "corp";
+      if (next === "corp") {
+        ensureCorpFonts();
+        root.dataset.theme = "corp";
       } else {
         delete root.dataset.theme;
       }

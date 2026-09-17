@@ -33,20 +33,22 @@
         var h = document.documentElement;
         var theme = localStorage.getItem("theme");
         var mode = localStorage.getItem("mode");
-        // Äldre lagring: "theme" var light/dark/classic.
+        // Äldre lagring: "theme" var light/dark/classic/silo.
         if (theme === "light" || theme === "dark") { mode = mode || theme; theme = null; }
-        if (theme === "classic") { h.setAttribute("data-theme", "classic"); mode = mode || "dark"; }
+        if (theme === "classic") { theme = "corp"; mode = mode || "dark"; }
+        if (theme === "silo") theme = "dev";
+        if (theme === "corp") h.setAttribute("data-theme", "corp");
         if (mode === "dark" || mode === "light") h.setAttribute("data-mode", mode);
-        if (theme === "classic") {
+        if (theme === "corp") {
           var l = document.createElement("link");
-          l.rel = "stylesheet"; l.id = "classicFonts";
+          l.rel = "stylesheet"; l.id = "corpFonts";
           l.href = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
           document.head.appendChild(l);
         }
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/styles.css?v=7">
 
   <script type="application/ld+json">
   {
@@ -85,10 +87,10 @@
         <a href="#experience" data-nav>Erfarenhet</a>
         <a href="#contact" data-nav>Kontakt</a>
       </nav>
-      <button class="theme-switch" id="themeSwitch" type="button" role="switch" aria-checked="false" aria-label="Tema: Silo. Byt till Klassisk">
+      <button class="theme-switch" id="themeSwitch" type="button" role="switch" aria-checked="false" aria-label="Tema: Dev. Byt till Corp">
         <span class="theme-switch__label">Tema</span>
         <span class="theme-switch__track" aria-hidden="true"><span class="theme-switch__knob"></span></span>
-        <span class="theme-switch__value" id="themeSwitchValue">Silo</span>
+        <span class="theme-switch__value" id="themeSwitchValue">Dev</span>
       </button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Byt till mörkt läge">
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -532,6 +534,6 @@
     <span class="toast__desc"></span>
   </div>
 
-  <script src="/main.js?v=6" defer></script>
+  <script src="/main.js?v=7" defer></script>
 </body>
 </html>
