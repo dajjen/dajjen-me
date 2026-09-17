@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
+    "predeploy": "bash scripts/require-main.sh",
     "deploy": "wrangler deploy",
     "test": "node --test",
     "cv": "bash cv/build.sh",

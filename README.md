@@ -39,7 +39,10 @@ dajjen-me**. Loggar och fel visas under fliken **Observability** på workern.
 ## Deploya ny kod
 
 Det finns ingen automatisk deploy ännu. Ändringar går live först när någon
-kör `npm run deploy`.
+kör `npm run deploy`. **Production deployas bara från `main`.** Skriptet
+`scripts/require-main.sh` körs automatiskt före deploy och stoppar om du står
+på en annan branch, har ocommittade ändringar eller inte har pushat `main`.
+Arbeta på en featurebranch, merga till `main`, pusha och deploya därifrån.
 
 1. Gör ändringen i `public/` (sajten) eller `src/` (workern). Ändras CV:t:
    redigera `cv/cv.html` och kör `npm run cv` så att PDF:en byggs om.
@@ -47,8 +50,9 @@ kör `npm run deploy`.
    laddar dem i `public/index.html` och `public/404.html`, så att besökare
    inte får en cachad version.
 3. Testa lokalt: `npm test` och `npm run dev` (se Utveckling).
-4. Committa och pusha till GitHub så att repot speglar det som ligger live.
-5. Deploya:
+4. Committa, merga till `main` och pusha till GitHub så att repot speglar
+   det som ligger live.
+5. Deploya från `main`:
 
 ```bash
 npx wrangler login   # bara första gången på en ny dator, öppnar webbläsaren
@@ -97,6 +101,8 @@ public/            Sajten (serveras som statiska filer)
 cv/
   cv.html          Källan till CV:t, samma palett och typsnitt som sajten
   build.sh         Renderar cv.html till public/cv/david-backman-cv.pdf
+scripts/
+  require-main.sh  Körs före deploy: kräver main, rent arbetsträd och pushad main
 src/
   worker.js        Cloudflare Worker: omdirigeringar, /api/contact, statiska filer
   contact.js       Validering och MIME-bygge, utan Cloudflare-beroenden
