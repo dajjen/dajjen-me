@@ -16,11 +16,17 @@
     (function () {
       try {
         var t = localStorage.getItem("theme");
-        if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+        if (t === "dark" || t === "light" || t === "classic") document.documentElement.setAttribute("data-theme", t);
+        if (t === "classic") {
+          var l = document.createElement("link");
+          l.rel = "stylesheet"; l.id = "classicFonts";
+          l.href = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
+          document.head.appendChild(l);
+        }
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/styles.css?v=4">
+  <link rel="stylesheet" href="/styles.css?v=5">
   <style>
     .nf { position: relative; min-height: 100dvh; display: grid; place-items: center; text-align: center; overflow: hidden; padding: 40px 0; }
     .nf__inner { position: relative; display: inline-flex; flex-direction: column; align-items: center; gap: 22px; }

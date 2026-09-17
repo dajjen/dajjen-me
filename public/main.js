@@ -10,20 +10,33 @@
   const year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ---------- Tema: ljust/mörkt ---------- */
+  /* ---------- Tema: ljust / mörkt / klassiskt ---------- */
   const root = document.documentElement;
   const themeBtn = $("#themeToggle");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const THEMES = ["light", "dark", "classic"];
+  const THEME_NAMES = { light: "Ljust", dark: "Mörkt", classic: "Klassiskt" };
+  const CLASSIC_FONTS = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
   const currentTheme = () => root.dataset.theme || (prefersDark.matches ? "dark" : "light");
+  const ensureClassicFonts = () => {
+    if ($("#classicFonts")) return;
+    const l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.id = "classicFonts";
+    l.href = CLASSIC_FONTS;
+    document.head.appendChild(l);
+  };
   const updateThemeButton = () => {
     if (!themeBtn) return;
-    const dark = currentTheme() === "dark";
-    themeBtn.setAttribute("aria-label", dark ? "Byt till ljust tema" : "Byt till mörkt tema");
-    themeBtn.setAttribute("title", dark ? "Ljust tema" : "Mörkt tema");
+    const cur = currentTheme();
+    const next = THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length];
+    themeBtn.setAttribute("aria-label", "Tema: " + THEME_NAMES[cur] + ". Byt till " + THEME_NAMES[next].toLowerCase());
+    themeBtn.setAttribute("title", THEME_NAMES[cur] + " tema · klicka för " + THEME_NAMES[next].toLowerCase());
   };
   if (themeBtn) {
     themeBtn.addEventListener("click", () => {
-      const next = currentTheme() === "dark" ? "light" : "dark";
+      const next = THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length];
+      if (next === "classic") ensureClassicFonts();
       root.dataset.theme = next;
       try { localStorage.setItem("theme", next); } catch (e) { /* privat läge */ }
       updateThemeButton();
