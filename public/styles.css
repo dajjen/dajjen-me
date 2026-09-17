@@ -1103,9 +1103,9 @@ em {
 .timeline__logos-sub {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
-.timeline__logos-sub img { height: 12px; max-width: 70px; }
+.timeline__logos .timeline__logos-sub img { height: 11px; max-width: 66px; opacity: 0.55; }
 .timeline__logos img {
   height: 26px;
   width: auto;
