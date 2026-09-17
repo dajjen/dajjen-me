@@ -69,8 +69,7 @@
   --grid-line: #cfc5aa;
   --nav-bg: rgba(250, 247, 239, 0.92);
   --stamp-blend: multiply;
-  --logo-plate: transparent;
-  --logo-plate-pad: 6px 0;
+  --logo-halo: none;
   --portrait-filter: saturate(0.92) contrast(1.04);
 }
 
@@ -105,8 +104,7 @@
   --grid-line: #3d372b;
   --nav-bg: rgba(22, 20, 16, 0.9);
   --stamp-blend: screen;
-  --logo-plate: #faf7ef;
-  --logo-plate-pad: 8px 12px;
+  --logo-halo: drop-shadow(0 0 1px rgba(236, 229, 211, 0.95)) drop-shadow(0 0 3px rgba(236, 229, 211, 0.55));
   --portrait-filter: saturate(0.85) contrast(1.02) brightness(0.92);
   color-scheme: dark;
 }
@@ -138,8 +136,7 @@
     --grid-line: #3d372b;
     --nav-bg: rgba(22, 20, 16, 0.9);
     --stamp-blend: screen;
-    --logo-plate: #faf7ef;
-    --logo-plate-pad: 8px 12px;
+    --logo-halo: drop-shadow(0 0 1px rgba(236, 229, 211, 0.95)) drop-shadow(0 0 3px rgba(236, 229, 211, 0.55));
     --portrait-filter: saturate(0.85) contrast(1.02) brightness(0.92);
     color-scheme: dark;
   }
@@ -1168,8 +1165,7 @@ em {
   gap: 18px;
   flex-shrink: 0;
   margin-left: auto;
-  padding: var(--logo-plate-pad);
-  background: var(--logo-plate);
+  padding: 6px 0;
 }
 .timeline__logos--stack {
   flex-direction: column;
@@ -1187,6 +1183,7 @@ em {
   width: auto;
   max-width: 120px;
   object-fit: contain;
+  filter: var(--logo-halo);
 }
 .timeline__logos img[src*="mittuniversitetet"] { height: 34px; }
 .timeline__role {
