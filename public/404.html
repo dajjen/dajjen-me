@@ -5,32 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sidan hittades inte – David Backman</title>
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f1ecdf">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,300..900&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=3">
   <style>
-    .nf { min-height: 100svh; display: grid; place-items: center; text-align: center; position: relative; overflow: hidden; isolation: isolate; }
-    .nf__code { font-family: var(--font-mono); color: var(--accent); letter-spacing: .1em; font-size: 14px; }
-    .nf h1 { font-size: clamp(56px, 12vw, 140px); line-height: .95; letter-spacing: -.045em; margin-top: 14px; }
-    .nf p { color: var(--text-2); margin-top: 18px; font-size: 18px; }
-    .nf .btn { margin-top: 32px; }
+    .nf { position: relative; min-height: 100dvh; display: grid; place-items: center; text-align: center; overflow: hidden; padding: 40px 0; }
+    .nf__inner { position: relative; display: inline-flex; flex-direction: column; align-items: center; gap: 22px; }
+    .nf__stamp {
+      position: absolute; top: -34px; right: -28px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 16px 9px;
+      border: 3px double var(--red); color: var(--red); font-family: var(--ff-mono); text-transform: uppercase;
+      transform: rotate(7deg); mix-blend-mode: multiply; opacity: .82; pointer-events: none;
+    }
+    .nf__stamp strong { font-size: 15px; font-weight: 600; letter-spacing: .18em; }
+    .nf__stamp small { font-size: 9px; letter-spacing: .16em; }
+    .nf h1 { font-family: var(--ff-display); font-weight: 800; font-size: clamp(64px, 14vw, 160px); line-height: .9; letter-spacing: .005em; text-transform: uppercase; }
+    .nf p { color: var(--ink-soft); font-size: 16.5px; max-width: 46ch; }
+    .nf .btn { margin-top: 8px; }
+    @media (max-width: 560px) { .nf__stamp { display: none; } }
   </style>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
   <main class="nf">
-    <div class="hero__glow hero__glow--a" aria-hidden="true"></div>
     <div class="hero__grid" aria-hidden="true"></div>
     <div class="container">
-      <p class="nf__code">404</p>
-      <h1>Hoppsan<em>.</em></h1>
-      <p>Sidan du letar efter finns inte.</p>
-      <a class="btn btn--primary" href="/">
-        Tillbaka till startsidan
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <div class="nf__inner">
+        <div class="nf__stamp" aria-hidden="true">
+          <strong>404</strong>
+          <small>Not found</small>
+        </div>
+        <p class="eyebrow">
+          <span class="hatch" aria-hidden="true"></span>
+          Fel 404 · Sidan saknas
+        </p>
+        <h1>Hopp<em>san.</em></h1>
+        <p>Sidan du letar efter finns inte i ritningen. Kontrollera adressen eller gå tillbaka till startsidan.</p>
+        <a class="btn btn--primary" href="/">
+          Tillbaka till startsidan
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
     </div>
   </main>
 </body>

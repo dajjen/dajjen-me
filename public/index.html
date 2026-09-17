@@ -6,7 +6,7 @@
   <title>David Backman – Backend Developer & Solution Architect</title>
   <meta name="description" content="David Backman – Solution Architect specialiserad på PHP, Drupal, API-arkitektur och storskaliga webbintegrationer.">
   <meta name="author" content="David Backman">
-  <meta name="theme-color" content="#0b1012">
+  <meta name="theme-color" content="#f1ecdf">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://dajjen.me/">
 
@@ -23,9 +23,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,300..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="/assets/david-800.webp" type="image/webp" fetchpriority="high">
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -43,27 +43,32 @@
 </head>
 <body>
   <a class="skip-link" href="#about">Hoppa till innehåll</a>
-  <div class="grain" aria-hidden="true"></div>
 
-  <!-- ============ NAV ============ -->
+  <!-- ============ NAV / STATUSRAD ============ -->
   <header class="nav" id="nav">
-    <a class="nav__brand" href="#home" aria-label="Till toppen">
-      <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true">
-        <polygon points="50,8 92,29 92,71 50,92 8,71 8,29" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
-      </svg>
-      <span>db</span>
-    </a>
-    <nav class="nav__links" aria-label="Huvudmeny">
-      <a href="#home" data-nav>Hem</a>
-      <a href="#about" data-nav>Om mig</a>
-      <a href="#expertise" data-nav>Expertis</a>
-      <a href="#experience" data-nav>Erfarenhet</a>
-      <a href="#contact" data-nav>Kontakt</a>
-    </nav>
-    <a class="nav__cta" href="#contact">Kontakta mig</a>
-    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Öppna meny">
-      <span></span><span></span>
-    </button>
+    <div class="nav__inner">
+      <a class="nav__cell nav__brand logo" href="#home" aria-label="dajjen.me – till toppen">
+        <span class="logo__mark" aria-hidden="true"><span class="bars"><i></i><i></i><i></i><i></i></span></span>
+        <span class="logo__word"><strong>db</strong><small>dajjen.me</small></span>
+      </a>
+      <span class="nav__cell nav__hide-sm">
+        <span class="nav__dot" aria-hidden="true"></span>
+        Tillgänglig för uppdrag
+      </span>
+      <span class="nav__cell nav__hide-sm">Östersund · SE</span>
+      <span class="nav__spacer"></span>
+      <nav class="nav__links" aria-label="Huvudmeny">
+        <a href="#home" data-nav>Hem</a>
+        <a href="#about" data-nav>Om mig</a>
+        <a href="#expertise" data-nav>Expertis</a>
+        <a href="#experience" data-nav>Erfarenhet</a>
+        <a href="#contact" data-nav>Kontakt</a>
+      </nav>
+      <a class="nav__cta" href="#contact">Kontakta mig</a>
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Öppna meny">
+        <span></span><span></span>
+      </button>
+    </div>
   </header>
   <div class="mobile-menu" id="mobileMenu" hidden>
     <a href="#home" data-nav>Hem</a>
@@ -76,31 +81,35 @@
   <main>
     <!-- ============ HERO ============ -->
     <section class="hero" id="home">
-      <div class="hero__glow hero__glow--a" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--b" aria-hidden="true"></div>
       <div class="hero__grid" aria-hidden="true"></div>
 
       <div class="container hero__inner">
         <div class="hero__text">
-          <p class="eyebrow reveal">
+          <div class="hero__stamp" aria-hidden="true">
+            <strong>Drupal</strong>
+            <small>15+ år · sedan 2008</small>
+          </div>
+
+          <p class="eyebrow">
             <span class="eyebrow__dot"></span>
             Solution Architect · Östersund, Sverige
           </p>
-          <h1 class="hero__title reveal" style="--d:.05s">
-            David<br>Backman<span class="hero__period">.</span>
+          <h1 class="hero__title">
+            <span>David</span>
+            <span>Backman<span class="hero__period">.</span></span>
           </h1>
-          <p class="hero__role reveal" style="--d:.1s">
+          <p class="hero__role">
             Backend Developer <em>&amp;</em> Solution Architect
           </p>
-          <p class="hero__lede reveal" style="--d:.15s">
-            Specialiserad på PHP, Drupal CMS och API-arkitektur. Skapar skalbara lösningar för stora webbprojekt med fokus på kvalitet och prestanda.
+          <p class="hero__lede">
+            Specialiserad på <strong>PHP, Drupal CMS och API-arkitektur</strong>. Skapar skalbara lösningar för stora webbprojekt med fokus på kvalitet och prestanda.
           </p>
-          <div class="hero__actions reveal" style="--d:.2s">
+          <div class="hero__actions">
             <a class="btn btn--primary" href="#contact">
               Kontakta mig
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn btn--ghost btn--drupal" href="https://www.drupal.org/u/dajjen" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn--drupal" href="https://www.drupal.org/u/dajjen" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C9.6 6.4 5 8.4 5 14a7 7 0 0 0 14 0c0-5.6-4.6-7.6-7-11.5z"/><path d="M9 14.5c.8 1.4 1.9 2.1 3 2.1s2.2-.7 3-2.1"/></svg>
               <span class="btn__stack">Drupal<small>min profil</small></span>
             </a>
@@ -113,26 +122,50 @@
               GitHub
             </a>
           </div>
+
+          <ul class="hero__meta">
+            <li>
+              <span class="hero__meta-label">Roll</span>
+              <span class="hero__meta-value">Solution Architect</span>
+            </li>
+            <li>
+              <span class="hero__meta-label">Arbetsgivare</span>
+              <span class="hero__meta-value">Digitalist Open Tech</span>
+            </li>
+            <li>
+              <span class="hero__meta-label">Stack</span>
+              <span class="hero__meta-value">PHP · Drupal · Symfony</span>
+            </li>
+            <li>
+              <span class="hero__meta-label">I branschen sedan</span>
+              <span class="hero__meta-value">2007</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="hero__media reveal" style="--d:.15s">
+        <figure class="hero__media">
           <div class="portrait">
             <picture>
-              <source type="image/webp" srcset="/assets/david-400.webp 400w, /assets/david-800.webp 800w, /assets/david-1200.webp 1200w" sizes="(max-width: 720px) 70vw, 420px">
+              <source type="image/webp" srcset="/assets/david-400.webp 400w, /assets/david-800.webp 800w, /assets/david-1200.webp 1200w" sizes="(max-width: 720px) 70vw, 440px">
               <img src="/assets/david-800.jpg" width="800" height="800" alt="David Backman – Backend Developer & Solution Architect" fetchpriority="high" decoding="async">
             </picture>
-            <div class="portrait__ring" aria-hidden="true"></div>
+            <div class="portrait__marks" aria-hidden="true"></div>
           </div>
           <div class="hero__badge">
             <span class="hero__badge-label">Fokus</span>
             <span class="hero__badge-value">PHP · Drupal · API:er</span>
           </div>
-        </div>
+          <figcaption class="hero__figcap">
+            <strong>Fig. 01</strong> David Backman, Östersund
+          </figcaption>
+        </figure>
       </div>
 
-      <a class="hero__scroll" href="#about" aria-label="Scrolla ner">
-        <span></span>
-      </a>
+      <div class="hero__rule" aria-hidden="true">
+        <span class="hero__rule-line"></span>
+        <span class="hero__rule-text">Backend · CMS · API</span>
+        <span class="hero__rule-line"></span>
+      </div>
     </section>
 
     <!-- ============ MARQUEE ============ -->
@@ -147,7 +180,11 @@
     <section class="section" id="about">
       <div class="container">
         <div class="section__head reveal">
-          <span class="section__index">01</span>
+          <p class="section__eyebrow">
+            <span class="hatch" aria-hidden="true"></span>
+            <span class="section__index">01</span>
+            Bakgrund
+          </p>
           <h2 class="section__title">Om <em>mig</em></h2>
         </div>
 
@@ -166,25 +203,46 @@
 
           <div class="about__cards">
             <article class="card reveal" style="--d:.05s">
-              <div class="card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
+              <div class="card__head">
+                <span class="hatch" aria-hidden="true"></span>
+                Backend
+                <span class="card__index">A/01</span>
               </div>
-              <h3>Backend Development</h3>
-              <p>Djup expertis i PHP och moderna backend-ramverk.</p>
+              <div class="card__body">
+                <div class="card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
+                </div>
+                <h3>Backend Development</h3>
+                <p>Djup expertis i PHP och moderna backend-ramverk.</p>
+              </div>
             </article>
             <article class="card reveal" style="--d:.1s">
-              <div class="card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="card__icon--fill"><path d="M15.78 5.113C14.09 3.425 12.48 1.815 11.998 0c-.48 1.815-2.09 3.425-3.778 5.113-2.534 2.53-5.405 5.4-5.405 9.702a9.184 9.185 0 1018.368 0c0-4.303-2.871-7.171-5.405-9.702M6.72 16.954c-.563-.019-2.64-3.6 1.215-7.416l2.55 2.788a.218.218 0 01-.016.325c-.61.625-3.204 3.227-3.527 4.126-.066.186-.164.18-.222.177M12 21.677a3.158 3.158 0 01-3.158-3.159 3.291 3.291 0 01.787-2.087c.57-.696 2.37-2.655 2.37-2.655s1.774 1.988 2.367 2.649a3.09 3.09 0 01.792 2.093A3.158 3.158 0 0112 21.677m6.046-5.123c-.068.15-.223.398-.431.405-.371.014-.411-.177-.686-.583-.604-.892-5.864-6.39-6.848-7.455-.866-.935-.122-1.595.223-1.94C10.736 6.547 12 5.285 12 5.285s3.766 3.574 5.336 6.016c1.57 2.443 1.029 4.556.71 5.253"/></svg>
+              <div class="card__head">
+                <span class="hatch" aria-hidden="true"></span>
+                CMS
+                <span class="card__index">A/02</span>
               </div>
-              <h3>CMS Specialist</h3>
-              <p>Lång erfarenhet av Drupal och content management.</p>
+              <div class="card__body">
+                <div class="card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="card__icon--fill"><path d="M15.78 5.113C14.09 3.425 12.48 1.815 11.998 0c-.48 1.815-2.09 3.425-3.778 5.113-2.534 2.53-5.405 5.4-5.405 9.702a9.184 9.185 0 1018.368 0c0-4.303-2.871-7.171-5.405-9.702M6.72 16.954c-.563-.019-2.64-3.6 1.215-7.416l2.55 2.788a.218.218 0 01-.016.325c-.61.625-3.204 3.227-3.527 4.126-.066.186-.164.18-.222.177M12 21.677a3.158 3.158 0 01-3.158-3.159 3.291 3.291 0 01.787-2.087c.57-.696 2.37-2.655 2.37-2.655s1.774 1.988 2.367 2.649a3.09 3.09 0 01.792 2.093A3.158 3.158 0 0112 21.677m6.046-5.123c-.068.15-.223.398-.431.405-.371.014-.411-.177-.686-.583-.604-.892-5.864-6.39-6.848-7.455-.866-.935-.122-1.595.223-1.94C10.736 6.547 12 5.285 12 5.285s3.766 3.574 5.336 6.016c1.57 2.443 1.029 4.556.71 5.253"/></svg>
+                </div>
+                <h3>CMS Specialist</h3>
+                <p>Lång erfarenhet av Drupal och content management.</p>
+              </div>
             </article>
             <article class="card reveal" style="--d:.15s">
-              <div class="card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+              <div class="card__head">
+                <span class="hatch" aria-hidden="true"></span>
+                API
+                <span class="card__index">A/03</span>
               </div>
-              <h3>API Architecture</h3>
-              <p>Design och implementation av skalbara API:er.</p>
+              <div class="card__body">
+                <div class="card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13"/></svg>
+                </div>
+                <h3>API Architecture</h3>
+                <p>Design och implementation av skalbara API:er.</p>
+              </div>
             </article>
           </div>
         </div>
@@ -195,43 +253,47 @@
     <section class="section section--alt" id="expertise">
       <div class="container">
         <div class="section__head reveal">
-          <span class="section__index">02</span>
+          <p class="section__eyebrow">
+            <span class="hatch" aria-hidden="true"></span>
+            <span class="section__index">02</span>
+            Verktygslåda
+          </p>
           <h2 class="section__title">Teknisk <em>expertis</em></h2>
         </div>
 
         <div class="skills">
           <div class="skill-group reveal" style="--d:.0s">
-            <h3><span class="skill-group__num">/01</span>Backend &amp; Languages</h3>
+            <h3><span class="skill-group__num">SPEC 01</span>Backend &amp; Languages</h3>
             <ul>
               <li>PHP</li><li>Node.js</li><li>Python</li><li>SQL</li><li>TypeScript</li>
             </ul>
           </div>
           <div class="skill-group reveal" style="--d:.05s">
-            <h3><span class="skill-group__num">/02</span>CMS &amp; Frameworks</h3>
+            <h3><span class="skill-group__num">SPEC 02</span>CMS &amp; Frameworks</h3>
             <ul>
               <li>Drupal</li><li>Symfony</li><li>Laravel</li><li>Express.js</li>
             </ul>
           </div>
           <div class="skill-group reveal" style="--d:.1s">
-            <h3><span class="skill-group__num">/03</span>API &amp; Integration</h3>
+            <h3><span class="skill-group__num">SPEC 03</span>API &amp; Integration</h3>
             <ul>
               <li>REST API</li><li>GraphQL</li><li>Webhooks</li><li>OAuth</li><li>JWT</li>
             </ul>
           </div>
           <div class="skill-group reveal" style="--d:.15s">
-            <h3><span class="skill-group__num">/04</span>DevOps &amp; Tools</h3>
+            <h3><span class="skill-group__num">SPEC 04</span>DevOps &amp; Tools</h3>
             <ul>
               <li>Docker</li><li>Git</li><li>CI/CD</li><li>Linux</li><li>Nginx</li>
             </ul>
           </div>
           <div class="skill-group reveal" style="--d:.2s">
-            <h3><span class="skill-group__num">/05</span>Databases</h3>
+            <h3><span class="skill-group__num">SPEC 05</span>Databases</h3>
             <ul>
               <li>MySQL</li><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li>
             </ul>
           </div>
           <div class="skill-group reveal" style="--d:.25s">
-            <h3><span class="skill-group__num">/06</span>Architecture</h3>
+            <h3><span class="skill-group__num">SPEC 06</span>Architecture</h3>
             <ul>
               <li>Microservices</li><li>Event-driven</li><li>Design Patterns</li><li>System Design</li>
             </ul>
@@ -244,7 +306,11 @@
     <section class="section" id="experience">
       <div class="container">
         <div class="section__head reveal">
-          <span class="section__index">03</span>
+          <p class="section__eyebrow">
+            <span class="hatch" aria-hidden="true"></span>
+            <span class="section__index">03</span>
+            Tidslinje
+          </p>
           <h2 class="section__title">Erfaren<em>het</em></h2>
         </div>
 
@@ -255,8 +321,10 @@
               <span class="timeline__location">Östersund, Sverige</span>
             </div>
             <div class="timeline__body">
-              <h3 class="timeline__role">Solution Architect</h3>
-              <p class="timeline__company">Digitalist Open Tech <span class="timeline__note">(tidigare NodeOne &amp; Wunderkraut)</span></p>
+              <div class="timeline__head">
+                <h3 class="timeline__role">Solution Architect</h3>
+                <p class="timeline__company">Digitalist Open Tech <span class="timeline__note">(tidigare NodeOne &amp; Wunderkraut)</span></p>
+              </div>
               <ul class="timeline__list">
                 <li>Arkitekterar och utvecklar komplexa webbapplikationer med fokus på skalbarhet och prestanda</li>
                 <li>Leder teknisk design av API:er och integrationer för stora företagskunder</li>
@@ -273,8 +341,10 @@
               <span class="timeline__location">Stockholm, Sverige</span>
             </div>
             <div class="timeline__body">
-              <h3 class="timeline__role">Web Developer</h3>
-              <p class="timeline__company">Cybercom Group <span class="timeline__note">(Stockholm)</span></p>
+              <div class="timeline__head">
+                <h3 class="timeline__role">Web Developer</h3>
+                <p class="timeline__company">Cybercom Group <span class="timeline__note">(Stockholm)</span></p>
+              </div>
               <ul class="timeline__list">
                 <li>Webbutveckling i konsultuppdrag med fokus på PHP och Drupal</li>
               </ul>
@@ -287,8 +357,10 @@
               <span class="timeline__location">Östersund, Sverige</span>
             </div>
             <div class="timeline__body">
-              <h3 class="timeline__role">System Developer</h3>
-              <p class="timeline__company">Cybercom Group <span class="timeline__note">(Östersund)</span></p>
+              <div class="timeline__head">
+                <h3 class="timeline__role">System Developer</h3>
+                <p class="timeline__company">Cybercom Group <span class="timeline__note">(Östersund)</span></p>
+              </div>
               <ul class="timeline__list">
                 <li>Systemutveckling i konsultuppdrag – första steget in i branschen efter examen</li>
               </ul>
@@ -301,14 +373,66 @@
               <span class="timeline__location">Utbildning</span>
             </div>
             <div class="timeline__body">
-              <h3 class="timeline__role">Programvaruteknik</h3>
-              <p class="timeline__company">Mittuniversitetet</p>
+              <div class="timeline__head">
+                <h3 class="timeline__role">Programvaruteknik</h3>
+                <p class="timeline__company">Mittuniversitetet</p>
+              </div>
               <ul class="timeline__list">
                 <li>Examen 2007 inom Computer Software Technology</li>
               </ul>
             </div>
           </li>
         </ol>
+
+        <div class="logos reveal">
+          <p class="logos__title">Arbetsgivare &amp; lärosäte <span class="logos__line" aria-hidden="true"></span> 2003 – 2017</p>
+          <ul class="logos__grid">
+            <li>
+              <a class="wordmark" href="https://www.digitalist.se" target="_blank" rel="noopener noreferrer">
+                <span class="wordmark__row">
+                  <span class="wordmark__mark" aria-hidden="true">
+                    <svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="13"/><circle class="fill" cx="17" cy="17" r="5"/><path d="M17 4v8M17 22v8M4 17h8M22 17h8"/></svg>
+                  </span>
+                  <span class="wordmark__name">Node<span>One</span></span>
+                </span>
+                <span class="wordmark__meta"><span>2011 – 2012</span><span>Blev Wunderkraut</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="wordmark" href="https://www.digitalist.se" target="_blank" rel="noopener noreferrer">
+                <span class="wordmark__row">
+                  <span class="wordmark__mark" aria-hidden="true">
+                    <svg viewBox="0 0 34 34"><path d="M4 6l5 22 8-16 8 16 5-22"/><path class="fill" d="M14 30h6v-4h-6z"/></svg>
+                  </span>
+                  <span class="wordmark__name">Wunder<span>kraut</span></span>
+                </span>
+                <span class="wordmark__meta"><span>2012 – 2017</span><span>Blev Digitalist</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="wordmark" href="https://www.knowit.se" target="_blank" rel="noopener noreferrer">
+                <span class="wordmark__row">
+                  <span class="wordmark__mark" aria-hidden="true">
+                    <svg viewBox="0 0 34 34"><rect x="4" y="4" width="16" height="16"/><rect class="fill" x="14" y="14" width="16" height="16"/></svg>
+                  </span>
+                  <span class="wordmark__name">Cyber<span>com</span></span>
+                </span>
+                <span class="wordmark__meta"><span>2007 – 2011</span><span>Östersund · Sthlm</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="wordmark" href="https://www.miun.se" target="_blank" rel="noopener noreferrer">
+                <span class="wordmark__row">
+                  <span class="wordmark__mark" aria-hidden="true">
+                    <svg viewBox="0 0 34 34"><path d="M3 28l9-16 6 10 4-6 9 12z"/><path class="fill" d="M12 12l3 5h-6z"/><path d="M3 28h28"/></svg>
+                  </span>
+                  <span class="wordmark__name">Mitt<span>universitetet</span></span>
+                </span>
+                <span class="wordmark__meta"><span>2003 – 2007</span><span>Examen 2007</span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <div class="experience__more reveal">
           <p>Vill du veta mer om min bakgrund och tidigare erfarenheter?</p>
@@ -321,10 +445,14 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section section--alt" id="contact">
+    <section class="section section--alt section--stripe" id="contact">
       <div class="container">
         <div class="section__head reveal">
-          <span class="section__index">04</span>
+          <p class="section__eyebrow">
+            <span class="hatch" aria-hidden="true"></span>
+            <span class="section__index">04</span>
+            Hör av dig
+          </p>
           <h2 class="section__title">Kontakta <em>mig</em></h2>
         </div>
 
@@ -336,7 +464,7 @@
             <ul class="contact__links">
               <li>
                 <a href="mailto:perdavidbackman@gmail.com">
-                  <span class="contact__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></span>
+                  <span class="contact__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16"/><path d="m22 7-10 7L2 7"/></svg></span>
                   <span class="contact__label">E-post</span>
                   <span class="contact__value">perdavidbackman@gmail.com</span>
                 </a>
@@ -366,42 +494,70 @@
           </div>
 
           <form class="contact__form reveal" id="contactForm" novalidate style="--d:.1s">
-            <div class="field">
-              <label for="name">Namn</label>
-              <input id="name" name="name" type="text" placeholder="Ditt namn" maxlength="100" required autocomplete="name">
+            <div class="contact__form-head" aria-hidden="true">
+              <span class="contact__form-lights"><i></i><i></i><i></i></span>
+              kontakt@dajjen.me
+              <span class="contact__form-tag">POST /api/contact</span>
             </div>
-            <div class="field">
-              <label for="email">E-post</label>
-              <input id="email" name="email" type="email" placeholder="din@email.se" maxlength="255" required autocomplete="email">
+            <div class="contact__form-body">
+              <div class="field">
+                <label for="name">Namn</label>
+                <input id="name" name="name" type="text" placeholder="Ditt namn" maxlength="100" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="email">E-post</label>
+                <input id="email" name="email" type="email" placeholder="din@email.se" maxlength="255" required autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="message">Meddelande</label>
+                <textarea id="message" name="message" rows="5" placeholder="Skriv ditt meddelande här..." maxlength="1000" required></textarea>
+              </div>
+              <div class="field field--hp" aria-hidden="true">
+                <label for="website">Webbplats</label>
+                <input id="website" name="honeypot" type="text" tabindex="-1" autocomplete="off">
+              </div>
+              <button class="btn btn--primary btn--block" type="submit" id="submitBtn">
+                <span class="btn__label">Skicka meddelande</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              </button>
+              <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
             </div>
-            <div class="field">
-              <label for="message">Meddelande</label>
-              <textarea id="message" name="message" rows="5" placeholder="Skriv ditt meddelande här..." maxlength="1000" required></textarea>
-            </div>
-            <div class="field field--hp" aria-hidden="true">
-              <label for="website">Webbplats</label>
-              <input id="website" name="honeypot" type="text" tabindex="-1" autocomplete="off">
-            </div>
-            <button class="btn btn--primary btn--block" type="submit" id="submitBtn">
-              <span class="btn__label">Skicka meddelande</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            </button>
-            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ============ FOOTER / STÄMPELRUTA ============ -->
   <footer class="footer">
-    <div class="container footer__inner">
-      <p>© <span id="year"></span> David Backman. Alla rättigheter förbehållna.</p>
-      <div class="footer__links">
-        <a href="https://github.com/dajjen" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.drupal.org/u/dajjen" target="_blank" rel="noopener noreferrer">Drupal</a>
-        <a href="https://www.linkedin.com/in/dajjen" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:perdavidbackman@gmail.com">E-post</a>
+    <div class="footer__inner">
+      <div class="footer__cell">
+        <span class="footer__label">Projekt</span>
+        <span class="logo logo--lg">
+          <span class="logo__mark" aria-hidden="true"><span class="bars bars--lg"><i></i><i></i><i></i><i></i></span></span>
+          <span class="logo__word"><strong>db</strong><small>dajjen.me</small></span>
+        </span>
+      </div>
+      <div class="footer__cell">
+        <span class="footer__label">Ritad av</span>
+        <span class="footer__value">David Backman · Backend Developer &amp; Solution Architect</span>
+      </div>
+      <div class="footer__cell">
+        <span class="footer__label">Länkar</span>
+        <span class="footer__value">
+          <a href="https://github.com/dajjen" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.drupal.org/u/dajjen" target="_blank" rel="noopener noreferrer">Drupal</a>
+          <a href="https://www.linkedin.com/in/dajjen" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:perdavidbackman@gmail.com">E-post</a>
+        </span>
+      </div>
+      <div class="footer__cell">
+        <span class="footer__label">Plats</span>
+        <span class="footer__value">Östersund, SE</span>
+      </div>
+      <div class="footer__cell">
+        <span class="footer__label">Rev.</span>
+        <span class="footer__value">© <span id="year"></span> · Alla rättigheter förbehållna</span>
       </div>
     </div>
   </footer>
