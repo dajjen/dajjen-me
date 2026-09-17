@@ -760,46 +760,6 @@ em {
 }
 
 /* ==========================================================
-   Marquee – löpande teknikremsa
-   ========================================================== */
-.marquee {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--rule);
-  background: var(--paper-high);
-  padding: 14px 0;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-.marquee__track {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  width: max-content;
-  animation: marquee 44s linear infinite;
-}
-.marquee:hover .marquee__track { animation-play-state: paused; }
-.marquee__track span {
-  font-family: var(--ff-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  white-space: nowrap;
-}
-.marquee__track i {
-  width: 6px;
-  height: 6px;
-  background: var(--paper-press);
-  border: 1px solid var(--ink-faint);
-}
-.marquee__track i:nth-of-type(3n + 1) { background: var(--blue); border-color: var(--blue); }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* ==========================================================
    Sektioner
    ========================================================== */
 .section {
@@ -1431,7 +1391,6 @@ em {
   }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
-  .marquee__track { animation: none; }
   .hero .eyebrow, .hero__title, .hero__role, .hero__lede, .hero__actions, .hero__meta, .hero__media, .hero__stamp {
     opacity: 1; transform: none; animation: none;
   }
