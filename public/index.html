@@ -27,12 +27,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,300..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="/assets/david-800.webp" type="image/webp" fetchpriority="high">
   <script>
-    // Sätt sparat tema innan CSS renderas så sidan inte blinkar.
+    // Sätt sparat tema och läge innan CSS renderas så sidan inte blinkar.
     (function () {
       try {
-        var t = localStorage.getItem("theme");
-        if (t === "dark" || t === "light" || t === "classic") document.documentElement.setAttribute("data-theme", t);
-        if (t === "classic") {
+        var h = document.documentElement;
+        var theme = localStorage.getItem("theme");
+        var mode = localStorage.getItem("mode");
+        // Äldre lagring: "theme" var light/dark/classic.
+        if (theme === "light" || theme === "dark") { mode = mode || theme; theme = null; }
+        if (theme === "classic") { h.setAttribute("data-theme", "classic"); mode = mode || "dark"; }
+        if (mode === "dark" || mode === "light") h.setAttribute("data-mode", mode);
+        if (theme === "classic") {
           var l = document.createElement("link");
           l.rel = "stylesheet"; l.id = "classicFonts";
           l.href = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
@@ -41,7 +46,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/styles.css?v=6">
 
   <script type="application/ld+json">
   {
@@ -80,10 +85,14 @@
         <a href="#experience" data-nav>Erfarenhet</a>
         <a href="#contact" data-nav>Kontakt</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Byt till mörkt tema">
+      <button class="theme-switch" id="themeSwitch" type="button" role="switch" aria-checked="false" aria-label="Tema: Silo. Byt till Klassisk">
+        <span class="theme-switch__label">Tema</span>
+        <span class="theme-switch__track" aria-hidden="true"><span class="theme-switch__knob"></span></span>
+        <span class="theme-switch__value" id="themeSwitchValue">Silo</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Byt till mörkt läge">
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="theme-toggle__hex" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2.5 20.5,7.25 20.5,16.75 12,21.5 3.5,16.75 3.5,7.25"/></svg>
       </button>
       <a class="nav__cta" href="#contact">Kontakta mig</a>
       <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Öppna meny">
@@ -523,6 +532,6 @@
     <span class="toast__desc"></span>
   </div>
 
-  <script src="/main.js?v=5" defer></script>
+  <script src="/main.js?v=6" defer></script>
 </body>
 </html>

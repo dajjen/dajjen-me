@@ -12,12 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,300..900&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
-    // Sätt sparat tema innan CSS renderas så sidan inte blinkar.
+    // Sätt sparat tema och läge innan CSS renderas så sidan inte blinkar.
     (function () {
       try {
-        var t = localStorage.getItem("theme");
-        if (t === "dark" || t === "light" || t === "classic") document.documentElement.setAttribute("data-theme", t);
-        if (t === "classic") {
+        var h = document.documentElement;
+        var theme = localStorage.getItem("theme");
+        var mode = localStorage.getItem("mode");
+        // Äldre lagring: "theme" var light/dark/classic.
+        if (theme === "light" || theme === "dark") { mode = mode || theme; theme = null; }
+        if (theme === "classic") { h.setAttribute("data-theme", "classic"); mode = mode || "dark"; }
+        if (mode === "dark" || mode === "light") h.setAttribute("data-mode", mode);
+        if (theme === "classic") {
           var l = document.createElement("link");
           l.rel = "stylesheet"; l.id = "classicFonts";
           l.href = "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap";
@@ -26,7 +31,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/styles.css?v=6">
   <style>
     .nf { position: relative; min-height: 100dvh; display: grid; place-items: center; text-align: center; overflow: hidden; padding: 40px 0; }
     .nf__inner { position: relative; display: inline-flex; flex-direction: column; align-items: center; gap: 22px; }
