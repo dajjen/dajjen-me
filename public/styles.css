@@ -1168,38 +1168,24 @@ em {
   color: var(--ink);
   transition: background 0.16s ease, color 0.16s ease;
 }
-.wordmark:hover { background: var(--paper); color: var(--blue); }
-.wordmark__row {
+.wordmark:hover { background: var(--paper); }
+.wordmark__logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  height: 52px;
 }
-.wordmark__mark {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
+.wordmark__logo img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.8;
+  transition: filter 0.2s ease, opacity 0.2s ease;
 }
-.wordmark__mark svg {
-  width: 34px;
-  height: 34px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linejoin: round;
-  stroke-linecap: square;
-}
-.wordmark__mark svg .fill { fill: currentColor; stroke: none; }
-.wordmark__name {
-  font-family: var(--ff-display);
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-.wordmark__name span { font-weight: 400; }
+.wordmark:hover .wordmark__logo img { filter: none; opacity: 1; }
 .wordmark__meta {
   margin-top: auto;
   display: flex;
