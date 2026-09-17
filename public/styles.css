@@ -646,9 +646,16 @@ em {
 
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
   margin-top: 30px;
+}
+.hero__links {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 22px;
 }
 
 /* Meta-rutnät under knapparna */
@@ -740,19 +747,6 @@ em {
   mix-blend-mode: difference;
   opacity: 0.9;
 }
-.hero__figcap {
-  margin-top: 10px;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  font-family: var(--ff-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-.hero__figcap strong { color: var(--ink); font-weight: 600; }
-
 /* Linjal-avdelare under hero */
 .hero__rule {
   display: flex;
@@ -1199,6 +1193,8 @@ em {
 .contact__form {
   display: grid;
   gap: 16px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--ink-faint);
 }
 .contact__form-body {
   display: grid;
@@ -1409,8 +1405,10 @@ em {
   .hero__meta li { border-right: 0; }
   .hero__meta li:nth-last-child(-n + 2) { border-bottom: 1px solid var(--rule); }
   .hero__meta li:last-child { border-bottom: 0; }
-  .hero__actions { flex-direction: column; align-items: stretch; gap: 12px; }
-  .hero__actions .btn { justify-content: center; }
+  .hero__actions { align-items: stretch; gap: 16px; }
+  .hero__actions .btn--primary { justify-content: center; }
+  .hero__links { justify-content: space-between; gap: 12px; }
+  .hero__links .btn { padding-inline: 0; font-size: 12.5px; }
   .hero__stamp { display: none; }
 
   .skills { grid-template-columns: 1fr; }
