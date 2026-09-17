@@ -1086,14 +1086,26 @@ em {
   padding: 20px 24px 14px;
   border-bottom: 1px solid var(--rule);
 }
-.timeline__title { min-width: 0; }
+.timeline__title { flex: 1 1 420px; min-width: 0; }
 .timeline__logos {
   display: flex;
   align-items: center;
   gap: 18px;
   flex-shrink: 0;
+  margin-left: auto;
   padding: 6px 0;
 }
+.timeline__logos--stack {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.timeline__logos-sub {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.timeline__logos-sub img { height: 16px; max-width: 90px; }
 .timeline__logos img {
   height: 34px;
   width: auto;
