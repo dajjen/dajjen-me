@@ -1187,6 +1187,65 @@ em {
   background: var(--blue);
 }
 
+/* Kompakt lista med projekt i urval inne i en tidslinjepost */
+.timeline__projects {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--rule);
+}
+.timeline__projects summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--ff-mono);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  transition: color 0.14s ease;
+}
+.timeline__projects summary::-webkit-details-marker { display: none; }
+.timeline__projects summary::after {
+  content: "+ Visa";
+  color: var(--blue);
+}
+.timeline__projects[open] summary::after { content: "– Dölj"; }
+.timeline__projects summary:hover { color: var(--ink); }
+.timeline__projects summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.timeline__projects ul {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.timeline__projects li {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 18px;
+  align-content: start;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.proj__name {
+  grid-area: 1 / 1;
+  font-family: var(--ff-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.proj__year {
+  grid-area: 2 / 1;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.proj__desc { grid-area: 1 / 2 / 3 / 3; }
+
 .experience__more {
   margin-top: 48px;
   display: flex;
@@ -1450,6 +1509,10 @@ em {
   .timeline__item::before { left: 5px; }
   .timeline__item::after { left: 0; }
   .timeline__meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .timeline__projects li { grid-template-columns: 1fr; grid-template-rows: auto auto auto; row-gap: 2px; }
+  .proj__name { grid-area: 1 / 1; }
+  .proj__year { grid-area: 2 / 1; }
+  .proj__desc { grid-area: 3 / 1; }
 }
 
 @media (max-width: 560px) {
@@ -1767,6 +1830,12 @@ em {
 [data-theme="corp"] .timeline__body { padding: 26px 30px; border-bottom: 1px solid var(--rule); }
 [data-theme="corp"] .timeline__head { border-bottom: 0; padding-bottom: 0; }
 [data-theme="corp"] .timeline__list { padding-top: 18px; }
+[data-theme="corp"] .timeline__projects { border-top-style: solid; }
+[data-theme="corp"] .timeline__projects summary { font-family: var(--ff-body); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; text-transform: none; color: var(--ink); }
+[data-theme="corp"] .timeline__projects summary::after { font-weight: 500; }
+[data-theme="corp"] .timeline__projects li { font-family: var(--ff-body); font-size: 14.5px; }
+[data-theme="corp"] .proj__name { font-family: var(--ff-body); font-size: 14.5px; font-weight: 600; }
+[data-theme="corp"] .proj__year { font-family: var(--ff-mono); }
 [data-theme="corp"] .timeline__company { font-family: var(--ff-body); font-weight: 500; font-size: 15px; }
 [data-theme="corp"] .timeline__period {
   padding: 5px 11px;

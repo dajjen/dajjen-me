@@ -41,7 +41,8 @@ dajjen-me**. Loggar och fel visas under fliken **Observability** på workern.
 Det finns ingen automatisk deploy ännu. Ändringar går live först när någon
 kör `npm run deploy`.
 
-1. Gör ändringen i `public/` (sajten) eller `src/` (workern).
+1. Gör ändringen i `public/` (sajten) eller `src/` (workern). Ändras CV:t:
+   redigera `cv/cv.html` och kör `npm run cv` så att PDF:en byggs om.
 2. Om `styles.css` eller `main.js` ändrats: bumpa `?v=N` på raderna som
    laddar dem i `public/index.html` och `public/404.html`, så att besökare
    inte får en cachad version.
@@ -92,6 +93,10 @@ public/            Sajten (serveras som statiska filer)
   main.js          Navigation, scroll-reveal, kontaktformulär (POST /api/contact)
   404.html         Felsida
   assets/          Optimerade bilder (WebP + JPG-fallback, OG-bild)
+  cv/              Nedladdningsbart CV (david-backman-cv.pdf), byggs från cv/
+cv/
+  cv.html          Källan till CV:t, samma palett och typsnitt som sajten
+  build.sh         Renderar cv.html till public/cv/david-backman-cv.pdf
 src/
   worker.js        Cloudflare Worker: omdirigeringar, /api/contact, statiska filer
   contact.js       Validering och MIME-bygge, utan Cloudflare-beroenden
@@ -106,6 +111,7 @@ wrangler.jsonc     Cloudflare-konfiguration (assets, send_email, vars, domäner)
 ```bash
 npm install        # installerar wrangler
 npm test           # enhetstester
+npm run cv         # bygger CV-PDF:en med headless Chromium (kräver chromium i PATH)
 npm run dev        # hela sajten inkl. formulär på http://localhost:8787
 npm run check      # dry-run av deploy, validerar wrangler.jsonc
 ```

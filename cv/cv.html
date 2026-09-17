@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>David Backman – CV</title>
+  <meta name="author" content="David Backman">
+  <meta name="description" content="CV för David Backman, systemarkitekt och tech lead på Digitalist Open Tech.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,300..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=block" rel="stylesheet">
+  <style>
+    /* Samma palett och typsnitt som dajjen.me (tema Dev), anpassat för A4-utskrift. */
+    :root {
+      --paper: #ffffff;
+      --ink: #181511;
+      --ink-soft: #3f3a31;
+      --ink-mute: #6f6757;
+      --ink-faint: #9a917e;
+      --rule: #c9c0a9;
+      --rule-soft: #ded6c1;
+      --blue: #2447c9;
+      --ff-display: "Big Shoulders", "Archivo", "Liberation Sans", sans-serif;
+      --ff-body: "Archivo", "Liberation Sans", "DejaVu Sans", sans-serif;
+      --ff-mono: "IBM Plex Mono", "Liberation Mono", "DejaVu Sans Mono", monospace;
+    }
+    @page { size: A4; margin: 16mm 16mm 18mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+      font-family: var(--ff-body);
+      font-size: 10.2pt;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      background: var(--paper);
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* Huvud */
+    .head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6mm 12mm;
+      align-items: end;
+      padding-bottom: 5mm;
+      border-bottom: 2px solid var(--ink);
+    }
+    .head__eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 8pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 2mm;
+    }
+    .head h1 {
+      font-family: var(--ff-display);
+      font-weight: 750;
+      font-size: 36pt;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .head h1 span { color: var(--blue); }
+    .head__role {
+      margin-top: 2.5mm;
+      font-size: 12pt;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .head__contact {
+      font-family: var(--ff-mono);
+      font-size: 8.4pt;
+      line-height: 1.75;
+      color: var(--ink-mute);
+      text-align: right;
+    }
+    .head__contact strong { color: var(--ink); font-weight: 500; }
+
+    /* Kolumner */
+    .body {
+      display: grid;
+      grid-template-columns: 1fr 58mm;
+      gap: 0 10mm;
+      margin-top: 6mm;
+    }
+    .col--side { border-left: 1px solid var(--rule); padding-left: 6mm; }
+
+    section { margin-bottom: 6.5mm; break-inside: avoid; }
+    section.allow-break { break-inside: auto; }
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 3mm;
+      margin-bottom: 3mm;
+      font-family: var(--ff-display);
+      font-weight: 750;
+      font-size: 15pt;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    h2::before {
+      content: attr(data-index);
+      font-family: var(--ff-mono);
+      font-weight: 400;
+      font-size: 7.5pt;
+      letter-spacing: 0.18em;
+      color: var(--ink-faint);
+    }
+    .col--side h2 { font-size: 12.5pt; }
+
+    .intro { font-size: 10.8pt; line-height: 1.55; color: var(--ink); }
+    .intro strong { color: var(--blue); font-weight: 600; }
+    p + p { margin-top: 2.5mm; }
+
+    /* Projekt */
+    .project { padding: 3mm 0; border-top: 1px solid var(--rule-soft); break-inside: avoid; }
+    .project:first-of-type { border-top: 0; padding-top: 0; }
+    .project__head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+    .project__head h3 { font-size: 10.8pt; font-weight: 600; color: var(--ink); }
+    .project__meta { font-family: var(--ff-mono); font-size: 8pt; letter-spacing: 0.06em; color: var(--ink-faint); white-space: nowrap; }
+    .project__role { font-family: var(--ff-mono); font-size: 8.2pt; color: var(--blue); margin: 0.5mm 0 1.5mm; }
+    .project p { font-size: 9.8pt; }
+
+    /* Listor */
+    .list li { position: relative; padding-left: 5mm; margin-bottom: 1.2mm; font-size: 9.6pt; }
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.65em;
+      width: 2.6mm; height: 1.2px;
+      background: var(--blue);
+    }
+    .list--tight li { margin-bottom: 0.6mm; font-size: 9.2pt; }
+    .list--tight li strong { color: var(--ink); font-weight: 500; }
+
+    /* Anställningar och utbildning */
+    .entry { margin-bottom: 3mm; }
+    .entry__when { font-family: var(--ff-mono); font-size: 8pt; letter-spacing: 0.06em; color: var(--ink-faint); }
+    .entry__what { font-size: 9.8pt; font-weight: 600; color: var(--ink); }
+    .entry__where { font-size: 9.2pt; color: var(--ink-mute); }
+
+  </style>
+</head>
+<body>
+
+  <header class="head">
+    <div>
+      <p class="head__eyebrow">Curriculum vitae · Uppdaterad september 2026</p>
+      <h1>David Backman<span>.</span></h1>
+      <p class="head__role">Systemarkitekt &amp; Tech lead · Backendutvecklare · Drupalspecialist</p>
+    </div>
+    <div class="head__contact">
+      <strong>Digitalist Open Tech</strong> · Östersund<br>
+      <a href="https://dajjen.me">dajjen.me</a><br>
+      <a href="mailto:perdavidbackman@gmail.com">perdavidbackman@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/dajjen">linkedin.com/in/dajjen</a><br>
+      <a href="https://www.drupal.org/u/dajjen">drupal.org/u/dajjen</a> · <a href="https://github.com/dajjen">github.com/dajjen</a>
+    </div>
+  </header>
+
+  <div class="body">
+    <main class="col--main">
+
+      <section>
+        <p class="intro">
+          Erfaren backendutvecklare, tech lead och erkänd Drupalexpert med <strong>över femton års erfarenhet</strong> av att bygga robusta och skalbara plattformar för offentlig sektor och medlemsorganisationer. Har lett utveckling av komplexa Drupalprojekt med headless-arkitektur, multisajtlösningar och avancerade integrationer, med särskilt fokus på säkerhet, prestanda och sökfunktionalitet i OpenSearch och Elasticsearch.
+        </p>
+        <p>
+          Uppskattad för förmågan att skapa struktur i komplexa miljöer och leverera lösningar som är framtidssäkra, tillgängliga och enkla att vidareutveckla.
+        </p>
+      </section>
+
+      <section class="allow-break">
+        <h2 data-index="01">Projekt i urval</h2>
+
+        <article class="project">
+          <div class="project__head"><h3>Sobi – multisajtplattform</h3><span class="project__meta">2024 – pågående</span></div>
+          <p class="project__role">Arkitekt · Systemintegratör · Backendutvecklare</p>
+          <p>Ansvarar för teknisk arkitektur, integrationer och backendfunktionalitet i Sobis nya Drupal-multisajtplattform. Lösningen ger smidig hantering av flera webbplatser, avancerad rättighetsstyrning och centraliserat innehåll, och uppfyller höga krav på säkerhet, prestanda och tillgänglighet enligt WCAG.</p>
+        </article>
+
+        <article class="project">
+          <div class="project__head"><h3>Kommunal – kommunal.se och Mina sidor</h3><span class="project__meta">2021 – pågående</span></div>
+          <p class="project__role">Backendutvecklare</p>
+          <p>Nyckelroll i vidareutveckling och förvaltning av kommunal.se och det inloggade läget Mina sidor. Ansvarar för backendoptimering, integrationer, stabil drift och säkerhet samt implementation och optimering av OpenSearch för sökfunktionaliteten.</p>
+        </article>
+
+        <article class="project">
+          <div class="project__head"><h3>Sveriges dataportal 2.0, DIGG</h3><span class="project__meta">2023 – pågående</span></div>
+          <p class="project__role">Fullstackutvecklare</p>
+          <p>Ansvarat för headless CMS-implementation med Strapi. Med fokus på öppen källkod, robust integration och framtidssäker arkitektur har dataportalen blivit en central plattform för transparens och innovation i offentlig sektor.</p>
+        </article>
+
+        <article class="project">
+          <div class="project__head"><h3>Balder – balder.se</h3><span class="project__meta">2024</span></div>
+          <p class="project__role">Backendutvecklare</p>
+          <p>Sammanslagning och modernisering av balder.se. Ansvarade för integrationer mot interna system (Dynamics) och externa tjänster (Cision). Resultatet är en framtidssäker, skalbar plattform som effektiviserar processer och stärker Balders digitala affär.</p>
+        </article>
+
+        <article class="project">
+          <div class="project__head"><h3>SVT</h3><span class="project__meta">2022 – 2024</span></div>
+          <p class="project__role">Backendutvecklare · Arkitektur</p>
+          <p>Drivande i utvecklingen av en headless-arkitektur för SVT, inklusive migrering från .NET till Drupal och implementation av Elasticsearch. Byggde en robust, skalbar plattform för omnikanal och flera webbplatser med fokus på säkerhet, prestanda och framtidssäkring.</p>
+        </article>
+
+        <article class="project">
+          <div class="project__head"><h3>Kulturhuset Stadsteatern</h3><span class="project__meta">2020 – 2024</span></div>
+          <p class="project__role">Lösningsarkitekt · Fullstackutvecklare</p>
+          <p>Byggde upp Kulturhuset Stadsteaterns nya Drupalplattform från grunden och integrerade webbplatsen mot biljettsystem och andra backendtjänster. Resultatet är en flexibel, lättförvaltad och användarvänlig plattform som stödjer både verksamhet och publikflöden.</p>
+        </article>
+      </section>
+
+      <section>
+        <h2 data-index="02">Äldre projekt i urval</h2>
+        <ul class="list">
+          <li><strong>Samhall</strong>, 2019–2021. Kundportal i Drupal för en organisation med 23 000 anställda.</li>
+          <li><strong>Arbetsförmedlingen Play</strong>, 2017–2020. Videoportal i Drupal och Vue.</li>
+          <li><strong>Bostadsrätterna</strong>, 2014–2019. Drupal-multisajt med 2 300 subsajter och SSO.</li>
+          <li><strong>Socialstyrelsen</strong>, 2015–2019. Flerspråkig Drupalsajt.</li>
+          <li><strong>Ericsson</strong>. Intranät i Drupal.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 data-index="03">Bidrag till Drupal och redaktörsutbildning</h2>
+        <p>Bidrar sedan länge till Drupals kärnkod och moduler och är aktiv i open source-communityn. Acquia Drupal Certification och ett konsekvent fokus på best practice säkerställer hög kodkvalitet. Se bidragen på <a href="https://www.drupal.org/u/dajjen">drupal.org/u/dajjen</a>.</p>
+        <p>I varje projekt ansvarar David för att dokumentera och utbilda redaktörer i hur de skapar och hanterar innehåll. Han har tagit fram guider och hållit utbildningar för redaktörer hos bland andra SVT, DIGG, Kulturhuset Stadsteatern och Sobi, så att kunderna själva kan arbeta effektivt och långsiktigt med sina webbplatser.</p>
+      </section>
+
+    </main>
+
+    <aside class="col--side">
+
+      <section>
+        <h2 data-index="A">Anställningar</h2>
+        <div class="entry">
+          <p class="entry__when">2011 – pågående</p>
+          <p class="entry__what">Systemarkitekt &amp; Tech lead</p>
+          <p class="entry__where">Digitalist Open Tech, Östersund<br>(tidigare NodeOne och Wunderkraut)</p>
+        </div>
+        <div class="entry">
+          <p class="entry__when">2008 – 2011</p>
+          <p class="entry__what">Webbutvecklare</p>
+          <p class="entry__where">Cybercom Group, Stockholm</p>
+        </div>
+        <div class="entry">
+          <p class="entry__when">2007 – 2008</p>
+          <p class="entry__what">Systemutvecklare</p>
+          <p class="entry__where">Cybercom Group, Östersund</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 data-index="B">Kompetenser</h2>
+        <ul class="list list--tight">
+          <li><strong>Drupal</strong> version 5–11, headless-arkitektur</li>
+          <li><strong>Lösningsarkitektur</strong> och tekniska förstudier</li>
+          <li><strong>Backend och fullstack</strong> med fokus på Drupal, headless CMS och integrationer</li>
+          <li><strong>Systemintegration</strong>: Dynamics, Cision, biljettsystem, SSO</li>
+          <li><strong>API</strong>: REST, GraphQL</li>
+          <li><strong>Sök</strong>: OpenSearch, Elasticsearch, Solr</li>
+          <li><strong>Databaser</strong>: MySQL, SQL</li>
+          <li><strong>DevOps och CI/CD</strong>: Docker, Jenkins, Git, automatiserade tester</li>
+          <li><strong>Testledning</strong>: automatiska och manuella tester i CI-miljö</li>
+          <li><strong>Förvaltning</strong>, underhåll och incidenthantering av affärskritiska plattformar</li>
+          <li><strong>Ramverk</strong>: Symfony, React, Vue</li>
+          <li><strong>Agila metoder</strong>: Scrum, Kanban</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 data-index="C">Utbildning</h2>
+        <div class="entry">
+          <p class="entry__when">2003 – 2007</p>
+          <p class="entry__what">Kandidatexamen i programvaruteknik</p>
+          <p class="entry__where">Mittuniversitetet</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 data-index="D">Certifieringar</h2>
+        <div class="entry">
+          <p class="entry__when">2017</p>
+          <p class="entry__what">Acquia Drupal Certification</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 data-index="E">Språk</h2>
+        <ul class="list list--tight">
+          <li><strong>Svenska</strong>, modersmål</li>
+          <li><strong>Engelska</strong>, flytande</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 data-index="F">Övriga uppdrag</h2>
+        <p style="font-size: 9.2pt">Förtroendevald medarbetarrepresentant i den fackliga gruppen på Digitalist, som möts månadsvis och tar upp arbetsrelaterade frågor.</p>
+      </section>
+
+    </aside>
+  </div>
+
+
+</body>
+</html>
