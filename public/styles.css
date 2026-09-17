@@ -1078,9 +1078,34 @@ em {
 }
 .timeline__body:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--paper-press); }
 .timeline__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
   padding: 20px 24px 14px;
   border-bottom: 1px solid var(--rule);
 }
+.timeline__title { min-width: 0; }
+.timeline__logos {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+  padding: 6px 0;
+}
+.timeline__logos img {
+  height: 34px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.75;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.timeline__logos img[src*="mittuniversitetet"] { height: 44px; }
+.timeline__body:hover .timeline__logos img { filter: none; opacity: 1; }
 .timeline__role {
   font-family: var(--ff-display);
   font-weight: 750;
@@ -1132,75 +1157,6 @@ em {
   color: var(--ink-soft);
 }
 
-
-/* Ordmärken: arbetsgivare och lärosäte som bläckstämplar */
-.logos {
-  margin-top: 56px;
-  max-width: 960px;
-}
-.logos__title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  font-family: var(--ff-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-.logos__line { flex: 1; height: 1px; background: var(--rule); }
-.logos__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--ink);
-  border: 1.5px solid var(--ink);
-}
-.logos__grid li { display: flex; }
-.wordmark {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px 20px 16px;
-  background: var(--paper-high);
-  color: var(--ink);
-  transition: background 0.16s ease, color 0.16s ease;
-}
-.wordmark:hover { background: var(--paper); }
-.wordmark__logo {
-  display: flex;
-  align-items: center;
-  height: 52px;
-}
-.wordmark__logo img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: grayscale(1) contrast(1.05);
-  opacity: 0.8;
-  transition: filter 0.2s ease, opacity 0.2s ease;
-}
-.wordmark:hover .wordmark__logo img { filter: none; opacity: 1; }
-.wordmark__meta {
-  margin-top: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 4px 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--rule);
-  font-family: var(--ff-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-.wordmark__meta span { white-space: nowrap; }
 
 /* ==========================================================
    Kontakt
@@ -1501,7 +1457,6 @@ em {
   .hero__stamp strong { font-size: 14px; }
 
   .about, .contact { grid-template-columns: 1fr; }
-  .logos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .timeline__item { grid-template-columns: 1fr; gap: 14px; padding-left: 26px; }
   .timeline__item::before { left: 5px; }
@@ -1522,7 +1477,6 @@ em {
   .hero__stamp { display: none; }
 
   .skills { grid-template-columns: 1fr; }
-  .logos__grid { grid-template-columns: 1fr; }
   .section__head { margin-bottom: 36px; }
   .section__eyebrow { font-size: 10.5px; }
   .card__body { grid-template-columns: 38px 1fr; }
